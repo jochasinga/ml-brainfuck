@@ -1,0 +1,12 @@
+Test 1: Must print 5432
++++++.>++++.>+++.>+++++---.
+
+Test 2: Must print 50
+> +++++ [ > +++++ +++++ < - ] > .
+
+Test 3: Must print nothing
+dinkadoodledoo 
+bacharest
+
+Test 4: Must print 20
+> ++ [ > +++++ +++++ < - ] > .
