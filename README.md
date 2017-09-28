@@ -1,18 +1,50 @@
-# ml-brainfuck
-When you feel your tinker-tooth aching, interpret Brainfuck in an ML.
+# brainfuck
+Read a Brainfuck text file or stdin and prints out the byte value (ASCII characters to be implemented).
+
+## Setup
++ Install Ocaml and OPAM
++ Compile to use in another Ocaml project:
+
+```bash
+
+$ ocamlc -c brainfuck.mli; ocamlopt -c brainfuck.ml
+
+```
 
 ## Usage
-Right now it doesn't do much apart from reading a text file and incrementing/decrementing
-value in specified cells and move between cells. Looping is to be implemented.
 
-## Goal
-+ Looping
-+ Read from command line and file
-+ Include Bucklescript backend 
-+ Embed in Javascript
-+ Spit out [dad jokes](1)
+sample.bf:
 
-[1]: https://www.buzzfeed.com/mikespohr/29-dad-jokes-that-are-so-bad-their-actually-good?utm_term=.ebNRlqoAQ#.dwdxgb3Xa
+```brainfuck
+
+Below calculates  100
+
++++++ [ > +++++ +++++ < - ] > .
+
+```
+
+run as a command line tool:
+
+```bash
+
+$ ocaml brainfuck.ml sample.bf
+$ echo '++++ [> +++++ +++++ < - ] > .' | ocaml brainfuck.ml
+
+```
+
+In another project:
+
+```ocaml
+
+Brainfuck.interpret("++++ [ > +++++ +++++ < - ] > .")
+
+```
+
+## Future Goals
++ Switch between byte value and ASCII
++ Include Bucklescript backend / Embed in Javascript
++ Spit out [dad jokes](1) when in distress
+
 Include Brainfuck expression in JavaScript:
 
 **Some idea from Flow**: 
@@ -29,3 +61,6 @@ let helloworld = () => {
 
 ```
 
+would be really cool.
+
+[1]: https://www.buzzfeed.com/mikespohr/29-dad-jokes-that-are-so-bad-their-actually-good?utm_term=.ebNRlqoAQ#.dwdxgb3Xa
