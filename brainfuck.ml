@@ -51,39 +51,31 @@ let interpret ?(tape_size = 30000) code =
         
       else
         scan (code_pos+1) tape_pos tape result
-      
+
   in scan 0 0 tape ""
 
-let () =
-  if Array.length Sys.argv <= 1 then
-    let line = read_line () in print_string line; print_newline ()
-
-let () =
-  if Array.length Sys.argv == 2 then
+let main () =
+  let args = Sys.argv in
+    if Array.length args <= 1 then
+      let line = read_line () in
+      let code = line in 
+      begin 
+        (* print_string line; print_newline () *)
+        interpret code;
+        print_newline ()
+      end
+    else if Array.length Sys.argv == 2 then
     let filename = Sys.argv.(1) in 
     let chan = open_in filename in
     let code = ref "" in 
     try 
-      while true; do
-        code := !code ^ input_line chan;
-      done;
-      flush stdout;
-      close_in chan
-    with End_of_file -> close_in_noerr chan;
-      interpret !code
+      while true do code := !code ^ input_line chan done;
+      flush stdout; close_in chan
+    with End_of_file -> close_in_noerr chan; interpret !code 
 
-let () =
-  if Array.length Sys.argv > 2 then
-    print_string "You're too greedy! One at a time!"; print_newline ()
+    else if Array.length Sys.argv > 2 
+    then print_string "You're too greedy! One at a time!"; print_newline ()
 
-(* Not used, but may be useful later 
-  (* 
-    let explode s = 
-      let rec exp i l =
-        if i < 0 then l 
-        else exp (i - 1) (s.[i] :: l) 
-      in exp (String.length s - 1) []
-  *)
-*)
+let () = main ()
 
 
