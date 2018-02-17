@@ -1,5 +1,5 @@
-# brainfuck
-Simple Brainfuck parser that reads text file or stdin and prints out the byte value (ASCII characters to be implemented).
+# ml-brainfuck
+Simple Brainfuck parser that reads text file or stdin and prints out the byte value or ASCII character.
 
 ## Setup
 + Install Ocaml and OPAM
@@ -27,16 +27,39 @@ run as a command line tool:
 
 ```bash
 
-$ ocaml brainfuck.ml sample.bf
-$ echo '++++ [> +++++ +++++ < - ] > .' | ocaml brainfuck.ml
+# Prints '100'.
+$ ocaml brainfuck.ml sample.bf -fmt integer
+$ echo '++++ [> +++++ +++++ < - ] > .' | ocaml brainfuck.ml -fmt integer
 
 ```
 
-In another project:
+Leave out `-fmt` option to print out ASCII characters as a default.
+
+```brainfuck
+
+hello.txt
+
+> +++++++ [ > +++++ +++++ < - ] > ++ .
+> +++++ +++++ [ > +++++ +++++ < - ] > + .
+> +++++ +++++ [ > +++++ +++++ + < - ] > -- .
+> +++++ +++++ [ > +++++ +++++ + < - ] > -- .
+> +++++ +++++ [ > +++++ +++++ + < - ] > + .
+
+```
+
+```bash
+
+# Prints 'Hello'.
+$ ocaml brainfuck.ml hello.txt
+
+```
+
+
+To use in another Ocaml project:
 
 ```ocaml
 
-Brainfuck.interpret("++++ [ > +++++ +++++ < - ] > .")
+Brainfuck.interpret "++++ [ > +++++ +++++ < - ] > ."
 
 ```
 
