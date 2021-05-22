@@ -35,9 +35,9 @@ $ echo '++++ [> +++++ +++++ < - ] > .' | ocaml brainfuck.ml -fmt integer
 
 Leave out `-fmt` option to print out ASCII characters as a default.
 
-```brainfuck
+hello.bf:
 
-hello.txt
+```brainfuck
 
 > +++++++ [ > +++++ +++++ < - ] > ++ .
 > +++++ +++++ [ > +++++ +++++ < - ] > + .
